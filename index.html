@@ -84,6 +84,55 @@
       white-space: nowrap;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-beta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Geist', sans-serif;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, oklch(0.50 0.22 248) 0%, oklch(0.44 0.20 265) 100%);
+      box-shadow: 0 1px 3px rgba(80,60,220,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn-beta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .btn-beta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(80,60,220,0.35), inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+    .btn-beta:active { transform: translateY(0); }
+    .btn-beta-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 0 5px rgba(255,255,255,0.8);
+      animation: beta-pulse 2.2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes beta-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.75); }
+    }
+
     /* ─── Hero ────────────────────────────────────────── */
     .hero {
       position: relative;
@@ -1227,7 +1276,13 @@
       </span>
       <span class="nav-name">immonora</span>
     </a>
-    <span class="nav-badge">In Entwicklung</span>
+    <div class="nav-right">
+      <span class="nav-badge">In Entwicklung</span>
+      <a href="https://beta.immonora.com" class="btn-beta">
+        <span class="btn-beta-dot"></span>
+        Beta Login
+      </a>
+    </div>
   </nav>
 
   <!-- Hero -->
@@ -1261,7 +1316,7 @@
             <span style="background:#febc2e"></span>
             <span style="background:#28c840"></span>
           </div>
-          <div class="mockup-url">app.immonora.de</div>
+          <div class="mockup-url">app.immonora.com</div>
         </div>
 
         <!-- App body -->
