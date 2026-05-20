@@ -15,17 +15,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --accent:      oklch(0.62 0.17 264);
-      --accent-2:    oklch(0.55 0.19 230);
-      --accent-soft: oklch(0.20 0.08 264);
-      --bg:          #080810;
-      --surface:     #0f0f18;
-      --surface-2:   #161622;
-      --border:      rgba(255,255,255,0.07);
-      --border-mid:  rgba(255,255,255,0.12);
-      --text:        #f0f0f8;
-      --text-2:      #9898b0;
-      --text-3:      #5a5a72;
+      --accent:      oklch(0.50 0.22 248);
+      --accent-2:    oklch(0.44 0.20 225);
+      --accent-soft: oklch(0.93 0.05 248);
+      --bg:          #f6f6fb;
+      --surface:     #ffffff;
+      --surface-2:   #eeeef5;
+      --border:      rgba(10,10,40,0.08);
+      --border-mid:  rgba(10,10,40,0.13);
+      --text:        #09090f;
+      --text-2:      #48486a;
+      --text-3:      #9090aa;
       --radius:      12px;
       --radius-lg:   20px;
     }
@@ -51,7 +51,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(8,8,16,0.7);
+      background: rgba(246,246,251,0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -80,7 +80,7 @@
       border-radius: 100px;
       background: var(--accent-soft);
       color: var(--accent);
-      border: 1px solid rgba(124,90,245,0.25);
+      border: 1px solid rgba(60,100,230,0.2);
       white-space: nowrap;
     }
 
@@ -99,14 +99,14 @@
 
     .hero-glow {
       position: absolute;
-      top: -10%;
+      top: -15%;
       left: 50%;
       transform: translateX(-50%);
-      width: 900px;
-      height: 600px;
+      width: 1000px;
+      height: 700px;
       background: radial-gradient(ellipse at center,
-        oklch(0.45 0.18 264 / 0.18) 0%,
-        oklch(0.40 0.16 230 / 0.08) 40%,
+        oklch(0.72 0.14 248 / 0.22) 0%,
+        oklch(0.78 0.10 220 / 0.10) 40%,
         transparent 70%
       );
       pointer-events: none;
@@ -116,8 +116,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(10,10,40,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10,10,40,0.04) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
       pointer-events: none;
@@ -133,9 +133,9 @@
       color: var(--accent);
       margin-bottom: 24px;
       padding: 6px 14px;
-      border: 1px solid rgba(124,90,245,0.3);
+      border: 1px solid rgba(60,100,230,0.25);
       border-radius: 100px;
-      background: rgba(124,90,245,0.06);
+      background: var(--accent-soft);
     }
 
     .hero-eyebrow::before {
@@ -160,7 +160,7 @@
       line-height: 1.08;
       max-width: 820px;
       margin-bottom: 24px;
-      background: linear-gradient(100deg, #fff 0%, oklch(0.78 0.13 264) 35%, #fff 55%, oklch(0.78 0.13 264) 100%);
+      background: linear-gradient(100deg, #09090f 0%, oklch(0.46 0.22 248) 35%, #09090f 55%, oklch(0.46 0.22 248) 100%);
       background-size: 250% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -190,7 +190,7 @@
       padding: 6px 6px 6px 20px;
       max-width: 460px;
       width: 100%;
-      box-shadow: 0 0 0 1px rgba(124,90,245,0.1), 0 8px 32px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 20px rgba(60,100,230,0.08), 0 1px 4px rgba(0,0,0,0.06);
     }
 
     .signup-form input {
@@ -236,11 +236,11 @@
       position: relative;
       align-items: center;
       gap: 10px;
-      background: oklch(0.22 0.06 155);
-      border: 1px solid oklch(0.35 0.1 155);
+      background: oklch(0.96 0.04 155);
+      border: 1px solid oklch(0.80 0.10 155);
       border-radius: var(--radius);
       padding: 14px 20px;
-      color: oklch(0.75 0.14 155);
+      color: oklch(0.38 0.14 155);
       font-size: 14px;
       font-weight: 500;
       max-width: 460px;
@@ -272,6 +272,306 @@
     .waitlist-count strong {
       color: var(--text);
       font-weight: 600;
+    }
+
+    /* ─── App Mockup ──────────────────────────────────── */
+    .app-mockup-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin-top: 64px;
+    }
+
+    /* Glow halo behind the mockup */
+    .app-mockup-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(ellipse at 50% 60%,
+        oklch(0.68 0.14 248 / 0.18) 0%,
+        transparent 65%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app-mockup {
+      position: relative;
+      z-index: 1;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(10,10,40,0.12);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.6) inset,
+        0 32px 80px rgba(60,100,230,0.14),
+        0 8px 24px rgba(0,0,0,0.10);
+      background: #0d0d1a;
+    }
+
+    /* Chrome bar (traffic lights) */
+    .mockup-chrome {
+      background: #17172a;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mockup-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mockup-dots span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .mockup-url {
+      flex: 1;
+      height: 22px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.01em;
+    }
+
+    /* App layout: sidebar + main */
+    .mockup-body {
+      display: flex;
+      height: 360px;
+    }
+
+    .mockup-sidebar {
+      width: 180px;
+      background: #0a0a14;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      padding: 18px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .ms-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 4px;
+      margin-bottom: 4px;
+    }
+
+    .ms-logo-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, oklch(0.62 0.17 264), oklch(0.50 0.20 248));
+      flex-shrink: 0;
+    }
+
+    .ms-logo-text {
+      height: 10px;
+      width: 64px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 4px;
+    }
+
+    .ms-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .ms-item {
+      height: 30px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 8px;
+    }
+
+    .ms-item.active { background: rgba(255,255,255,0.08); }
+
+    .ms-item-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+
+    .ms-item.active .ms-item-dot { background: oklch(0.62 0.17 264 / 0.7); }
+
+    .ms-item-label {
+      height: 8px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.12);
+      flex: 1;
+    }
+
+    .ms-item.active .ms-item-label { background: rgba(255,255,255,0.3); }
+
+    .ms-badge {
+      width: 18px;
+      height: 18px;
+      border-radius: 100px;
+      background: oklch(0.55 0.20 25 / 0.8);
+      flex-shrink: 0;
+    }
+
+    /* Main content area */
+    .mockup-main {
+      flex: 1;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+      background: #0f0f1c;
+    }
+
+    .mm-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mm-title {
+      height: 14px;
+      width: 120px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 5px;
+    }
+
+    .mm-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mm-btn {
+      height: 28px;
+      border-radius: 8px;
+      background: oklch(0.50 0.22 248 / 0.85);
+      width: 80px;
+    }
+
+    .mm-btn.ghost {
+      background: rgba(255,255,255,0.07);
+      width: 60px;
+    }
+
+    /* KPI cards row */
+    .mm-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .mm-kpi {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .mm-kpi-label {
+      height: 8px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.15);
+      width: 55%;
+    }
+
+    .mm-kpi-value {
+      height: 16px;
+      border-radius: 4px;
+      width: 70%;
+    }
+
+    .mm-kpi-trend {
+      height: 7px;
+      border-radius: 3px;
+      width: 40%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .mm-kpi.blue  .mm-kpi-value { background: oklch(0.58 0.18 248 / 0.8); }
+    .mm-kpi.violet .mm-kpi-value { background: oklch(0.58 0.18 280 / 0.8); }
+    .mm-kpi.green .mm-kpi-value { background: oklch(0.58 0.16 155 / 0.8); }
+    .mm-kpi.amber .mm-kpi-value { background: oklch(0.70 0.16 65 / 0.8); }
+
+    /* Table / property list */
+    .mm-table {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mm-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px;
+      height: 38px;
+      background: #0f0f1c;
+    }
+
+    .mm-row.head {
+      background: rgba(255,255,255,0.04);
+      height: 30px;
+    }
+
+    .mm-row-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      background: oklch(0.50 0.22 248 / 0.3);
+      flex-shrink: 0;
+    }
+
+    .mm-row-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mm-row-t1 { height: 9px; border-radius: 3px; background: rgba(255,255,255,0.18); width: 55%; }
+    .mm-row-t2 { height: 7px; border-radius: 3px; background: rgba(255,255,255,0.09); width: 35%; }
+    .mm-row.head .mm-row-t1 { background: rgba(255,255,255,0.10); width: 40%; }
+
+    .mm-row-badge {
+      height: 20px;
+      border-radius: 100px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .mm-row-badge.green  { background: oklch(0.25 0.08 155); width: 52px; }
+    .mm-row-badge.amber  { background: oklch(0.28 0.08 65);  width: 64px; }
+    .mm-row-badge.blue   { background: oklch(0.22 0.08 248); width: 58px; }
+
+    .mm-row-num {
+      height: 10px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.14);
+      width: 48px;
+      flex-shrink: 0;
     }
 
     /* ─── Features ────────────────────────────────────── */
@@ -313,32 +613,34 @@
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+      gap: 16px;
     }
 
     .feature-card {
       background: var(--surface);
-      padding: 40px 36px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
       display: flex;
       flex-direction: column;
       gap: 16px;
       transition: background 0.2s, transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s;
       transform-style: preserve-3d;
       will-change: transform;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
-    .feature-card:hover { background: var(--surface-2); box-shadow: 0 12px 48px rgba(0,0,0,0.5); }
+    .feature-card:hover {
+      background: var(--surface);
+      box-shadow: 0 12px 40px rgba(60,100,230,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    }
 
     .feature-icon {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
       background: var(--accent-soft);
-      border: 1px solid rgba(124,90,245,0.2);
+      border: 1px solid rgba(60,100,230,0.15);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -403,10 +705,6 @@
       line-height: 1.65;
     }
 
-    .step-divider {
-      display: none;
-    }
-
     /* ─── CTA Banner ──────────────────────────────────── */
     .cta-section {
       padding: 100px 24px;
@@ -437,7 +735,7 @@
       width: 600px;
       height: 300px;
       background: radial-gradient(ellipse at center,
-        oklch(0.45 0.18 264 / 0.15) 0%,
+        oklch(0.72 0.14 248 / 0.12) 0%,
         transparent 70%
       );
       pointer-events: none;
@@ -471,7 +769,7 @@
       max-width: 420px;
       width: 100%;
       margin: 0 auto;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 20px rgba(60,100,230,0.06);
     }
 
     .cta-form input {
@@ -548,28 +846,18 @@
 
     .footer-links a:hover { color: var(--text-2); }
 
-    /* ─── Brand name highlight ───────────────────────── */
-    .brand {
-      font-weight: 700;
-      background: linear-gradient(135deg, oklch(0.72 0.16 264) 0%, oklch(0.62 0.20 230) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
     /* ─── Toast ───────────────────────────────────────── */
     #toast {
       position: fixed;
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(80px);
-      background: var(--surface-2);
-      border: 1px solid var(--border-mid);
+      background: var(--text);
       border-radius: var(--radius);
       padding: 12px 20px;
       font-size: 14px;
-      color: var(--text);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
       transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
       opacity: 0;
       z-index: 200;
@@ -581,22 +869,30 @@
       opacity: 1;
     }
 
+    /* ─── Brand name ──────────────────────────────────── */
+    .brand {
+      font-weight: 700;
+      background: linear-gradient(135deg, oklch(0.50 0.22 248) 0%, oklch(0.44 0.20 225) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     /* ─── Wow effects ─────────────────────────────────── */
 
     /* Cursor glow */
     #cursor-glow {
       position: fixed;
       top: 0; left: 0;
-      width: 700px; height: 700px;
+      width: 600px; height: 600px;
       border-radius: 50%;
       background: radial-gradient(circle,
-        oklch(0.62 0.17 264 / 0.055) 0%,
+        oklch(0.60 0.18 248 / 0.07) 0%,
         transparent 60%
       );
       pointer-events: none;
       z-index: 1;
       will-change: transform;
-      transition: opacity 0.5s;
     }
 
     /* Scroll reveal */
@@ -608,14 +904,11 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* Stagger for feature cards */
     .feature-card.reveal:nth-child(2) { transition-delay: 0.08s; }
     .feature-card.reveal:nth-child(3) { transition-delay: 0.16s; }
     .feature-card.reveal:nth-child(4) { transition-delay: 0.24s; }
     .feature-card.reveal:nth-child(5) { transition-delay: 0.32s; }
     .feature-card.reveal:nth-child(6) { transition-delay: 0.40s; }
-
-    /* Stagger for steps */
     .step.reveal:nth-child(2) { transition-delay: 0.12s; }
     .step.reveal:nth-child(3) { transition-delay: 0.24s; }
 
@@ -633,34 +926,46 @@
     }
     .hero-glow { animation: glow-pulse 9s ease-in-out infinite; }
 
-    /* h1 shimmer sweep */
+    /* h1 shimmer */
     @keyframes shimmer {
       0%   { background-position: 0% center; }
       100% { background-position: 250% center; }
     }
 
+    /* Mockup float */
+    @keyframes mockup-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+    .app-mockup { animation: mockup-float 7s ease-in-out infinite; }
+
     /* CTA card glow pulse */
     @keyframes cta-glow {
-      0%, 100% { box-shadow: 0 0 0 1px rgba(124,90,245,0.15), 0 24px 80px rgba(0,0,0,0.4); }
-      50%       { box-shadow: 0 0 0 1px rgba(124,90,245,0.5),  0 24px 80px rgba(124,90,245,0.14); }
+      0%, 100% { box-shadow: 0 0 0 1px rgba(60,100,230,0.1), 0 24px 80px rgba(0,0,0,0.06); }
+      50%       { box-shadow: 0 0 0 1px rgba(60,100,230,0.35), 0 24px 80px rgba(60,100,230,0.10); }
     }
     .cta-card { animation: cta-glow 4s ease-in-out infinite; }
 
-    /* Signup form subtle glow on focus */
+    /* Form focus glow */
     .signup-form:focus-within,
     .cta-form:focus-within {
-      box-shadow: 0 0 0 1px rgba(124,90,245,0.5), 0 8px 40px rgba(124,90,245,0.1);
+      box-shadow: 0 0 0 2px rgba(60,100,230,0.3), 0 4px 20px rgba(60,100,230,0.08);
       transition: box-shadow 0.3s;
     }
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .hero-eyebrow, h1, .hero-glow, .cta-card { animation: none !important; }
+      .hero-eyebrow, h1, .hero-glow, .cta-card, .app-mockup { animation: none !important; }
       #cursor-glow { display: none !important; }
     }
 
     /* ─── Responsive ──────────────────────────────────── */
+    @media (max-width: 860px) {
+      .mockup-sidebar { display: none; }
+      .mm-kpis { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 640px) {
       .signup-form { flex-direction: column; padding: 12px; border-radius: var(--radius); }
       .signup-form input { width: 100%; padding: 6px 4px; }
@@ -670,6 +975,8 @@
       .cta-form button { width: 100%; padding: 12px; border-radius: calc(var(--radius) - 4px); }
       .cta-card { padding: 40px 24px; }
       footer { flex-direction: column; align-items: flex-start; }
+      .mockup-body { height: 260px; }
+      .mm-kpis { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -718,9 +1025,131 @@
     </form>
     <p class="signup-note">Kein Spam. Nur wichtige Updates. Jederzeit abmeldbar.</p>
 
-    <div class="hero-logos">
-      <span class="hero-logos-label">Bald verfügbar</span>
-      <span class="waitlist-count">Sei unter den Ersten, die immonora testen.</span>
+    <!-- App UI Mockup -->
+    <div class="app-mockup-wrap" aria-hidden="true">
+      <div class="app-mockup">
+
+        <!-- Browser chrome -->
+        <div class="mockup-chrome">
+          <div class="mockup-dots">
+            <span style="background:#ff5f57"></span>
+            <span style="background:#febc2e"></span>
+            <span style="background:#28c840"></span>
+          </div>
+          <div class="mockup-url">app.immonora.de</div>
+        </div>
+
+        <!-- App body -->
+        <div class="mockup-body">
+
+          <!-- Sidebar -->
+          <div class="mockup-sidebar">
+            <div class="ms-logo">
+              <div class="ms-logo-icon"></div>
+              <div class="ms-logo-text"></div>
+            </div>
+            <div class="ms-nav">
+              <div class="ms-item active">
+                <div class="ms-item-dot"></div>
+                <div class="ms-item-label"></div>
+              </div>
+              <div class="ms-item">
+                <div class="ms-item-dot"></div>
+                <div class="ms-item-label"></div>
+              </div>
+              <div class="ms-item">
+                <div class="ms-item-dot"></div>
+                <div class="ms-item-label"></div>
+                <div class="ms-badge"></div>
+              </div>
+              <div class="ms-item">
+                <div class="ms-item-dot"></div>
+                <div class="ms-item-label"></div>
+              </div>
+              <div class="ms-item">
+                <div class="ms-item-dot"></div>
+                <div class="ms-item-label"></div>
+              </div>
+              <div class="ms-item">
+                <div class="ms-item-dot"></div>
+                <div class="ms-item-label"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main area -->
+          <div class="mockup-main">
+            <div class="mm-header">
+              <div class="mm-title"></div>
+              <div class="mm-actions">
+                <div class="mm-btn ghost"></div>
+                <div class="mm-btn"></div>
+              </div>
+            </div>
+
+            <!-- KPI row -->
+            <div class="mm-kpis">
+              <div class="mm-kpi blue">
+                <div class="mm-kpi-label"></div>
+                <div class="mm-kpi-value"></div>
+                <div class="mm-kpi-trend"></div>
+              </div>
+              <div class="mm-kpi violet">
+                <div class="mm-kpi-label"></div>
+                <div class="mm-kpi-value"></div>
+                <div class="mm-kpi-trend"></div>
+              </div>
+              <div class="mm-kpi green">
+                <div class="mm-kpi-label"></div>
+                <div class="mm-kpi-value"></div>
+                <div class="mm-kpi-trend"></div>
+              </div>
+              <div class="mm-kpi amber">
+                <div class="mm-kpi-label"></div>
+                <div class="mm-kpi-value"></div>
+                <div class="mm-kpi-trend"></div>
+              </div>
+            </div>
+
+            <!-- Property list table -->
+            <div class="mm-table">
+              <div class="mm-row head">
+                <div class="mm-row-icon" style="opacity:0"></div>
+                <div class="mm-row-text"><div class="mm-row-t1" style="width:30%"></div></div>
+                <div class="mm-row-num"></div>
+              </div>
+              <div class="mm-row">
+                <div class="mm-row-icon"></div>
+                <div class="mm-row-text">
+                  <div class="mm-row-t1"></div>
+                  <div class="mm-row-t2"></div>
+                </div>
+                <div class="mm-row-badge green"></div>
+                <div class="mm-row-num"></div>
+              </div>
+              <div class="mm-row">
+                <div class="mm-row-icon"></div>
+                <div class="mm-row-text">
+                  <div class="mm-row-t1" style="width:42%"></div>
+                  <div class="mm-row-t2" style="width:28%"></div>
+                </div>
+                <div class="mm-row-badge amber"></div>
+                <div class="mm-row-num"></div>
+              </div>
+              <div class="mm-row">
+                <div class="mm-row-icon"></div>
+                <div class="mm-row-text">
+                  <div class="mm-row-t1" style="width:60%"></div>
+                  <div class="mm-row-t2" style="width:40%"></div>
+                </div>
+                <div class="mm-row-badge blue"></div>
+                <div class="mm-row-num"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
@@ -761,7 +1190,7 @@
             <path d="M8 21h8M12 17v4"/>
           </svg>
         </div>
-        <div class="feature-title">Web & Mobile App</div>
+        <div class="feature-title">Web &amp; Mobile App</div>
         <div class="feature-desc">Ob am Desktop oder unterwegs per App — <strong class="brand">immonora</strong> läuft überall. Verwalter und Mieter haben jederzeit vollen Zugriff.</div>
       </div>
 
@@ -908,9 +1337,7 @@
       });
     });
 
-    // ─── Formspree endpoint ────────────────────────────
-    // Formspree endpoint — replace FORMSPREE_ID with your actual form ID
-    // Get it at formspree.io → New Form → copy the ID from the endpoint URL
+    // ─── Formspree ─────────────────────────────────────
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqejerek';
 
     function showToast(msg) {
