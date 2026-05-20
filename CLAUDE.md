@@ -53,7 +53,9 @@ Das Design orientiert sich am internen immonora-Produkt (`/Users/alex/immonora`)
 
 ## Newsletter / Signup
 
-Aktuell zeigt das Formular nur eine lokale Bestätigung (kein Backend). Für echte Leads muss ein E-Mail-Service integriert werden.
+**Wichtig: Kontaktdaten werden aktuell NICHT gespeichert.** Das Formular zeigt nur eine lokale Toast-Bestätigung — kein Backend, keine Datenbank. E-Mails gehen verloren.
+
+Für echte Leads muss ein E-Mail-Service integriert werden.
 
 **Empfohlene Optionen:**
 - **Mailchimp** — `handleSignup()` in `index.html` via fetch an Mailchimp-API anpassen
@@ -94,3 +96,6 @@ Neue HTML-Dateien im Root anlegen (`datenschutz.html`, `impressum.html`) und die
 
 ### Farben ändern
 CSS-Variablen im `:root`-Block oben im `<style>`-Tag anpassen — insbesondere `--accent` für die Hauptfarbe.
+
+### Markenname "immonora" hervorheben
+Die CSS-Klasse `.brand` erzeugt einen modernen Gradient-Texteffekt (Indigo → Blau-Violett, fett) für den Markennamen im Fließtext. Verwendung: `<strong class="brand">immonora</strong>`. Bereits eingesetzt in: Hero-Sub, Features-Sub, Feature-Card (Web & Mobile), How-Sub, Step-Desc (Schritt 2), CTA-Sub.

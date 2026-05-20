@@ -544,6 +544,15 @@
 
     .footer-links a:hover { color: var(--text-2); }
 
+    /* ─── Brand name highlight ───────────────────────── */
+    .brand {
+      font-weight: 700;
+      background: linear-gradient(135deg, oklch(0.72 0.16 264) 0%, oklch(0.62 0.20 230) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     /* ─── Toast ───────────────────────────────────────── */
     #toast {
       position: fixed;
@@ -613,7 +622,7 @@
     <h1>Immobilienverwaltung,<br/>die endlich funktioniert.</h1>
 
     <p class="hero-sub">
-      immonora verbindet Hausverwaltungen und Mieter in einer smarten Plattform —
+      <strong class="brand">immonora</strong> verbindet Hausverwaltungen und Mieter in einer smarten Plattform —
       mit KI-Automatisierung, transparenter Kommunikation und allem, was modernes Property Management braucht.
     </p>
 
@@ -633,7 +642,7 @@
   <section class="features" id="features">
     <p class="section-label">Was dich erwartet</p>
     <h2 class="section-title">Alles, was moderne Verwaltung braucht</h2>
-    <p class="section-sub">Von der smarten Mieterakte bis zur automatischen Abrechnung — immonora denkt mit.</p>
+    <p class="section-sub">Von der smarten Mieterakte bis zur automatischen Abrechnung — <strong class="brand">immonora</strong> denkt mit.</p>
 
     <div class="features-grid">
 
@@ -667,7 +676,7 @@
           </svg>
         </div>
         <div class="feature-title">Web & Mobile App</div>
-        <div class="feature-desc">Ob am Desktop oder unterwegs per App — immonora läuft überall. Verwalter und Mieter haben jederzeit vollen Zugriff.</div>
+        <div class="feature-desc">Ob am Desktop oder unterwegs per App — <strong class="brand">immonora</strong> läuft überall. Verwalter und Mieter haben jederzeit vollen Zugriff.</div>
       </div>
 
       <div class="feature-card">
@@ -711,7 +720,7 @@
     <div class="how-inner">
       <p class="section-label">So einfach geht's</p>
       <h2 class="section-title">In drei Schritten live</h2>
-      <p class="section-sub">immonora ist darauf ausgelegt, dass du in wenigen Minuten startklar bist — ohne IT-Kenntnisse.</p>
+      <p class="section-sub"><strong class="brand">immonora</strong> ist darauf ausgelegt, dass du in wenigen Minuten startklar bist — ohne IT-Kenntnisse.</p>
 
       <div class="steps">
         <div class="step">
@@ -722,7 +731,7 @@
         <div class="step">
           <div class="step-num">02</div>
           <div class="step-title">Mieter einladen</div>
-          <div class="step-desc">Mieter erhalten eine Einladung zur App. Ab sofort kommunizieren sie direkt über immonora — keine WhatsApp-Gruppen, keine verlorenen E-Mails.</div>
+          <div class="step-desc">Mieter erhalten eine Einladung zur App. Ab sofort kommunizieren sie direkt über <strong class="brand">immonora</strong> — keine WhatsApp-Gruppen, keine verlorenen E-Mails.</div>
         </div>
         <div class="step">
           <div class="step-num">03</div>
@@ -737,7 +746,7 @@
   <section class="cta-section">
     <div class="cta-card">
       <h2 class="cta-title">Bereit für smarte Verwaltung?</h2>
-      <p class="cta-sub">immonora ist gerade in Entwicklung. Trag dich in die Warteliste ein und erhalte als Erste/r Zugang zur Beta.</p>
+      <p class="cta-sub"><strong class="brand">immonora</strong> ist gerade in Entwicklung. Trag dich in die Warteliste ein und erhalte als Erste/r Zugang zur Beta.</p>
       <form class="cta-form" id="cta-form" onsubmit="handleSignup(event, 'cta')">
         <input type="email" placeholder="Deine E-Mail-Adresse" required autocomplete="email" />
         <button type="submit">Jetzt vormerken</button>
