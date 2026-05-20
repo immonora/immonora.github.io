@@ -781,6 +781,10 @@
   <div id="toast"></div>
 
   <script>
+    // Formspree endpoint — replace FORMSPREE_ID with your actual form ID
+    // Get it at formspree.io → New Form → copy the ID from the endpoint URL
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqejerek';
+
     function showToast(msg) {
       const t = document.getElementById('toast');
       t.textContent = msg;
@@ -788,22 +792,45 @@
       setTimeout(() => t.classList.remove('show'), 3500);
     }
 
-    function handleSignup(e, source) {
+    async function handleSignup(e, source) {
       e.preventDefault();
       const form = e.target;
       const email = form.querySelector('input[type="email"]').value.trim();
       if (!email) return;
 
-      // Here you'd integrate a real service (Mailchimp, ConvertKit, etc.)
-      // For now we just show a confirmation
-      form.querySelector('button').textContent = '✓ Eingetragen';
-      form.querySelector('button').style.opacity = '0.7';
-      form.querySelector('button').disabled = true;
-      form.querySelector('input').disabled = true;
-      form.querySelector('input').value = '';
-      form.querySelector('input').placeholder = email;
+      const btn = form.querySelector('button');
+      const input = form.querySelector('input');
+      const originalText = btn.textContent;
 
-      showToast('Danke! Du bist auf der Warteliste. 🎉');
+      btn.textContent = '…';
+      btn.disabled = true;
+      input.disabled = true;
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ email, quelle: source })
+        });
+
+        if (res.ok) {
+          btn.textContent = '✓ Eingetragen';
+          btn.style.opacity = '0.7';
+          input.value = '';
+          input.placeholder = email;
+          showToast('Danke! Du bist auf der Warteliste. 🎉');
+        } else {
+          btn.textContent = originalText;
+          btn.disabled = false;
+          input.disabled = false;
+          showToast('Fehler beim Eintragen — bitte erneut versuchen.');
+        }
+      } catch {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        input.disabled = false;
+        showToast('Netzwerkfehler — bitte erneut versuchen.');
+      }
     }
   </script>
 
