@@ -24,7 +24,7 @@ Die gesamte Seite lebt in einer einzigen `index.html`. Kein Build-Prozess, kein 
 
 ## Design-System
 
-Das Design orientiert sich am internen immonora-Produkt (`/Users/alex/immonora`).
+Das Design orientiert sich am internen immonora-Produkt.
 
 | Variable | Wert |
 |---|---|
