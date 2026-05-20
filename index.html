@@ -878,6 +878,119 @@
       background-clip: text;
     }
 
+    /* ─── Property Showcase ──────────────────────────── */
+    .property-showcase {
+      padding: 100px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .showcase-inner { max-width: 1100px; margin: 0 auto; }
+
+    .prop-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .prop-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(60,100,230,0.07), 0 1px 3px rgba(0,0,0,0.05);
+      transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s;
+    }
+
+    .prop-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(60,100,230,0.14), 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .prop-card-visual { display: block; width: 100%; height: 148px; overflow: hidden; }
+    .prop-card-visual svg { width: 100%; height: 100%; display: block; }
+
+    .prop-card-body { padding: 16px 20px 20px; }
+
+    .prop-card-name {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 3px;
+    }
+
+    .prop-card-addr { font-size: 13px; color: var(--text-3); margin-bottom: 14px; }
+
+    .prop-card-stats { display: flex; gap: 14px; margin-bottom: 10px; }
+
+    .pcs {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    .pcs-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    .prop-occ-bar {
+      height: 4px;
+      background: var(--surface-2);
+      border-radius: 100px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .prop-occ-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--accent), oklch(0.44 0.20 225));
+    }
+
+    .prop-card-footer { display: flex; align-items: center; justify-content: space-between; }
+
+    .prop-status {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .prop-status.green { background: oklch(0.94 0.07 155); color: oklch(0.35 0.14 155); }
+    .prop-status.blue  { background: var(--accent-soft);   color: var(--accent); }
+    .prop-status.full  { background: oklch(0.94 0.07 155); color: oklch(0.35 0.14 155); }
+
+    .prop-ticket-count { font-size: 12px; color: var(--text-3); }
+
+    /* ─── Enhanced Step Cards ─────────────────────────── */
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 0;
+      gap: 0;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(60,100,230,0.12);
+    }
+
+    .step-illo { display: block; width: 100%; height: 120px; overflow: hidden; }
+    .step-illo svg { width: 100%; height: 100%; display: block; }
+
+    .step-content { padding: 20px 24px 28px; display: flex; flex-direction: column; gap: 10px; }
+
+    @media (max-width: 760px) {
+      .prop-cards-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── Wow effects ─────────────────────────────────── */
 
     /* Cursor glow */
@@ -1230,6 +1343,228 @@
     </div>
   </section>
 
+  <!-- Property Showcase -->
+  <section class="property-showcase">
+    <div class="showcase-inner">
+      <p class="section-label">Deine Immobilien</p>
+      <h2 class="section-title">Jedes Objekt. Immer im Blick.</h2>
+      <p class="section-sub">Von der Altbauwohnung bis zum Gewerbeobjekt — <strong class="brand">immonora</strong> kennt jede Immobilie so gut wie du.</p>
+
+      <div class="prop-cards-grid">
+
+        <!-- Card 1: Apartment block -->
+        <div class="prop-card reveal">
+          <div class="prop-card-visual">
+            <svg viewBox="0 0 320 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dbeafe"/><stop offset="100%" stop-color="#eff6ff"/></linearGradient>
+              </defs>
+              <rect width="320" height="148" fill="url(#sky1)"/>
+              <!-- Main apartment block -->
+              <rect x="85" y="22" width="150" height="118" fill="#1d4ed8" rx="5"/>
+              <!-- Roof details -->
+              <rect x="98"  y="14" width="12" height="12" fill="#1e3a8a" rx="2"/>
+              <rect x="154" y="10" width="12" height="16" fill="#1e3a8a" rx="2"/>
+              <rect x="210" y="14" width="12" height="12" fill="#1e3a8a" rx="2"/>
+              <!-- Antenna -->
+              <rect x="159" y="2"  width="2" height="10" fill="#3b82f6"/>
+              <rect x="155" y="5"  width="10" height="2" fill="#3b82f6"/>
+              <!-- Windows row 1 -->
+              <rect x="97"  y="32" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="121" y="32" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="145" y="32" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="169" y="32" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="193" y="32" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="217" y="32" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <!-- Row 2 -->
+              <rect x="97"  y="52" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="121" y="52" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="145" y="52" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="169" y="52" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="193" y="52" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="217" y="52" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <!-- Row 3 -->
+              <rect x="97"  y="72" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="121" y="72" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="145" y="72" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="169" y="72" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="193" y="72" width="18" height="14" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="217" y="72" width="18" height="14" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <!-- Door -->
+              <rect x="148" y="96" width="28" height="44" fill="#1e3a8a" rx="3"/>
+              <circle cx="170" cy="118" r="3" fill="#93c5fd"/>
+              <!-- Side buildings (background) -->
+              <rect x="20"  y="60" width="55" height="80" fill="#93c5fd" rx="4" opacity="0.4"/>
+              <rect x="30"  y="72" width="10" height="8"  fill="#dbeafe" rx="1" opacity="0.7"/>
+              <rect x="46"  y="72" width="10" height="8"  fill="#fef9c3" rx="1" opacity="0.6"/>
+              <rect x="245" y="70" width="60" height="70" fill="#93c5fd" rx="4" opacity="0.35"/>
+              <rect x="254" y="82" width="10" height="8"  fill="#dbeafe" rx="1" opacity="0.7"/>
+              <rect x="270" y="82" width="10" height="8"  fill="#fef9c3" rx="1" opacity="0.6"/>
+              <!-- Trees -->
+              <rect x="55"  y="118" width="7" height="22" fill="#854d0e" rx="2"/>
+              <ellipse cx="58" cy="110" rx="16" ry="18" fill="#166534"/>
+              <rect x="258" y="120" width="7" height="20" fill="#854d0e" rx="2"/>
+              <ellipse cx="261" cy="112" rx="16" ry="16" fill="#15803d"/>
+              <!-- Ground -->
+              <rect x="0" y="134" width="320" height="14" fill="#bfdbfe"/>
+            </svg>
+          </div>
+          <div class="prop-card-body">
+            <div class="prop-card-name">Sonnenhof</div>
+            <div class="prop-card-addr">Hauptstr. 12, München</div>
+            <div class="prop-card-stats">
+              <span class="pcs"><span class="pcs-dot" style="background:#2563eb"></span>12 Einheiten</span>
+              <span class="pcs"><span class="pcs-dot" style="background:#16a34a"></span>96% belegt</span>
+            </div>
+            <div class="prop-occ-bar"><div class="prop-occ-fill" style="width:96%"></div></div>
+            <div class="prop-card-footer">
+              <span class="prop-status green">Aktiv</span>
+              <span class="prop-ticket-count">2 offene Tickets</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Villa / house -->
+        <div class="prop-card reveal">
+          <div class="prop-card-visual">
+            <svg viewBox="0 0 320 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0f2fe"/><stop offset="100%" stop-color="#f0f9ff"/></linearGradient>
+              </defs>
+              <rect width="320" height="148" fill="url(#sky2)"/>
+              <!-- Left annex -->
+              <rect x="28" y="74" width="70" height="68" fill="#3b82f6" rx="4"/>
+              <!-- Right annex -->
+              <rect x="222" y="74" width="70" height="68" fill="#3b82f6" rx="4"/>
+              <!-- Main body -->
+              <rect x="78" y="64" width="164" height="78" fill="#2563eb" rx="4"/>
+              <!-- Main roof -->
+              <polygon points="62,64 258,64 210,24 110,24" fill="#1d4ed8"/>
+              <!-- Left roof -->
+              <polygon points="20,74 106,74 84,52 42,52" fill="#1e40af"/>
+              <!-- Right roof -->
+              <polygon points="214,74 300,74 278,52 236,52" fill="#1e40af"/>
+              <!-- Chimney -->
+              <rect x="178" y="12" width="12" height="16" fill="#1e3a8a" rx="2"/>
+              <!-- Main windows -->
+              <rect x="90"  y="78" width="20" height="16" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="116" y="78" width="20" height="16" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="142" y="78" width="20" height="16" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="168" y="78" width="20" height="16" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="194" y="78" width="20" height="16" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="220" y="78" width="20" height="16" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <!-- Left annex windows -->
+              <rect x="40"  y="88" width="16" height="12" fill="#fef9c3" rx="2" opacity="0.8"/>
+              <rect x="62"  y="88" width="16" height="12" fill="#bfdbfe" rx="2" opacity="0.7"/>
+              <!-- Right annex windows -->
+              <rect x="232" y="88" width="16" height="12" fill="#bfdbfe" rx="2" opacity="0.7"/>
+              <rect x="254" y="88" width="16" height="12" fill="#fef9c3" rx="2" opacity="0.8"/>
+              <!-- Dormer windows -->
+              <rect x="116" y="36" width="16" height="12" fill="#fef9c3" rx="2" opacity="0.85"/>
+              <rect x="188" y="36" width="16" height="12" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <!-- Door -->
+              <rect x="148" y="106" width="28" height="36" fill="#1e3a8a" rx="3"/>
+              <circle cx="170" cy="124" r="3" fill="#93c5fd"/>
+              <!-- Bushes -->
+              <ellipse cx="50"  cy="138" rx="24" ry="12" fill="#15803d" opacity="0.7"/>
+              <ellipse cx="270" cy="138" rx="24" ry="12" fill="#166534" opacity="0.7"/>
+              <!-- Ground -->
+              <rect x="0" y="134" width="320" height="14" fill="#bae6fd"/>
+            </svg>
+          </div>
+          <div class="prop-card-body">
+            <div class="prop-card-name">Rosenpark</div>
+            <div class="prop-card-addr">Parkstr. 7, Hamburg</div>
+            <div class="prop-card-stats">
+              <span class="pcs"><span class="pcs-dot" style="background:#2563eb"></span>6 Einheiten</span>
+              <span class="pcs"><span class="pcs-dot" style="background:#d97706"></span>83% belegt</span>
+            </div>
+            <div class="prop-occ-bar"><div class="prop-occ-fill" style="width:83%"></div></div>
+            <div class="prop-card-footer">
+              <span class="prop-status blue">Vermietung läuft</span>
+              <span class="prop-ticket-count">1 offenes Ticket</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Mixed / tower + wide -->
+        <div class="prop-card reveal">
+          <div class="prop-card-visual">
+            <svg viewBox="0 0 320 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dbeafe"/><stop offset="100%" stop-color="#eff6ff"/></linearGradient>
+              </defs>
+              <rect width="320" height="148" fill="url(#sky3)"/>
+              <!-- Left tower (tall) -->
+              <rect x="32" y="28" width="68" height="114" fill="#1d4ed8" rx="5"/>
+              <rect x="42" y="20" width="10" height="12" fill="#1e3a8a" rx="2"/>
+              <rect x="56" y="16" width="10" height="16" fill="#1e3a8a" rx="2"/>
+              <rect x="80" y="20" width="10" height="12" fill="#1e3a8a" rx="2"/>
+              <!-- Tower windows 3 cols x 6 rows -->
+              <rect x="43" y="36" width="12" height="9" fill="#fef9c3" rx="1" opacity="0.9"/>
+              <rect x="60" y="36" width="12" height="9" fill="#bfdbfe" rx="1" opacity="0.8"/>
+              <rect x="77" y="36" width="12" height="9" fill="#fef9c3" rx="1" opacity="0.9"/>
+              <rect x="43" y="51" width="12" height="9" fill="#bfdbfe" rx="1" opacity="0.8"/>
+              <rect x="60" y="51" width="12" height="9" fill="#fef9c3" rx="1" opacity="0.9"/>
+              <rect x="77" y="51" width="12" height="9" fill="#bfdbfe" rx="1" opacity="0.8"/>
+              <rect x="43" y="66" width="12" height="9" fill="#fef9c3" rx="1" opacity="0.9"/>
+              <rect x="60" y="66" width="12" height="9" fill="#bfdbfe" rx="1" opacity="0.8"/>
+              <rect x="77" y="66" width="12" height="9" fill="#fef9c3" rx="1" opacity="0.9"/>
+              <rect x="43" y="81" width="12" height="9" fill="#bfdbfe" rx="1" opacity="0.8"/>
+              <rect x="60" y="81" width="12" height="9" fill="#fef9c3" rx="1" opacity="0.9"/>
+              <rect x="77" y="81" width="12" height="9" fill="#bfdbfe" rx="1" opacity="0.8"/>
+              <rect x="43" y="96" width="12" height="9" fill="#fef9c3" rx="1" opacity="0.9"/>
+              <rect x="60" y="96" width="12" height="9" fill="#bfdbfe" rx="1" opacity="0.8"/>
+              <rect x="77" y="96" width="12" height="9" fill="#fef9c3" rx="1" opacity="0.9"/>
+              <!-- Tower door -->
+              <rect x="57" y="116" width="20" height="26" fill="#1e3a8a" rx="2"/>
+              <!-- Wide right building -->
+              <rect x="118" y="54" width="170" height="88" fill="#2563eb" rx="5"/>
+              <rect x="130" y="46" width="12" height="12" fill="#1e3a8a" rx="2"/>
+              <rect x="162" y="46" width="12" height="12" fill="#1e3a8a" rx="2"/>
+              <rect x="244" y="46" width="12" height="12" fill="#1e3a8a" rx="2"/>
+              <rect x="276" y="46" width="12" height="12" fill="#1e3a8a" rx="2"/>
+              <!-- Wide windows 5 cols x 2 rows -->
+              <rect x="130" y="64" width="18" height="13" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="154" y="64" width="18" height="13" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="178" y="64" width="18" height="13" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="202" y="64" width="18" height="13" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="226" y="64" width="18" height="13" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="250" y="64" width="18" height="13" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="274" y="64" width="18" height="13" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="130" y="84" width="18" height="13" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="154" y="84" width="18" height="13" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="178" y="84" width="18" height="13" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="202" y="84" width="18" height="13" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="226" y="84" width="18" height="13" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="250" y="84" width="18" height="13" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="274" y="84" width="18" height="13" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <!-- Wide door -->
+              <rect x="190" y="110" width="28" height="32" fill="#1e3a8a" rx="3"/>
+              <circle cx="208" cy="126" r="3" fill="#93c5fd"/>
+              <!-- Ground -->
+              <rect x="0" y="134" width="320" height="14" fill="#bfdbfe"/>
+            </svg>
+          </div>
+          <div class="prop-card-body">
+            <div class="prop-card-name">Westquartier</div>
+            <div class="prop-card-addr">Bahnhofstr. 3, Berlin</div>
+            <div class="prop-card-stats">
+              <span class="pcs"><span class="pcs-dot" style="background:#2563eb"></span>24 Einheiten</span>
+              <span class="pcs"><span class="pcs-dot" style="background:#16a34a"></span>100% belegt</span>
+            </div>
+            <div class="prop-occ-bar"><div class="prop-occ-fill" style="width:100%"></div></div>
+            <div class="prop-card-footer">
+              <span class="prop-status full">Vollvermietet</span>
+              <span class="prop-ticket-count">5 offene Tickets</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- How it works -->
   <section class="how" id="how">
     <div class="how-inner">
@@ -1238,21 +1573,156 @@
       <p class="section-sub"><strong class="brand">immonora</strong> ist darauf ausgelegt, dass du in wenigen Minuten startklar bist — ohne IT-Kenntnisse.</p>
 
       <div class="steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <div class="step-title">Objekte anlegen</div>
-          <div class="step-desc">Importiere deine Bestandsdaten oder lege deine Immobilien mit wenigen Klicks neu an. Einheiten, Mieter und Dokumente folgen strukturiert.</div>
+
+        <!-- Step 1: Objekte anlegen -->
+        <div class="step reveal">
+          <div class="step-illo">
+            <svg viewBox="0 0 360 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="s1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dbeafe"/><stop offset="100%" stop-color="#eff6ff"/></linearGradient>
+              </defs>
+              <rect width="360" height="120" fill="url(#s1sky)"/>
+              <!-- Central building -->
+              <rect x="130" y="18" width="100" height="94" fill="#1d4ed8" rx="5"/>
+              <rect x="144" y="10" width="10" height="12" fill="#1e3a8a" rx="2"/>
+              <rect x="175" y="6"  width="10" height="16" fill="#1e3a8a" rx="2"/>
+              <rect x="206" y="10" width="10" height="12" fill="#1e3a8a" rx="2"/>
+              <!-- Windows 4x3 -->
+              <rect x="141" y="28" width="14" height="11" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="161" y="28" width="14" height="11" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="181" y="28" width="14" height="11" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="201" y="28" width="14" height="11" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="141" y="45" width="14" height="11" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="161" y="45" width="14" height="11" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="181" y="45" width="14" height="11" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="201" y="45" width="14" height="11" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="141" y="62" width="14" height="11" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="161" y="62" width="14" height="11" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="181" y="62" width="14" height="11" fill="#fef9c3" rx="2" opacity="0.9"/>
+              <rect x="201" y="62" width="14" height="11" fill="#bfdbfe" rx="2" opacity="0.8"/>
+              <rect x="163" y="88" width="24" height="24" fill="#1e3a8a" rx="3"/>
+              <!-- Side ghost buildings -->
+              <rect x="30"  y="55" width="75" height="57" fill="#93c5fd" rx="4" opacity="0.35"/>
+              <rect x="255" y="60" width="75" height="52" fill="#93c5fd" rx="4" opacity="0.30"/>
+              <!-- Trees -->
+              <rect x="108" y="98" width="6" height="18" fill="#854d0e" rx="2"/>
+              <ellipse cx="111" cy="91" rx="14" ry="15" fill="#166534"/>
+              <rect x="246" y="100" width="6" height="16" fill="#854d0e" rx="2"/>
+              <ellipse cx="249" cy="93" rx="14" ry="14" fill="#15803d"/>
+              <!-- Plus badge -->
+              <circle cx="255" cy="36" r="22" fill="white" stroke="#2563eb" stroke-width="2"/>
+              <rect x="253" y="24" width="3" height="24" rx="1.5" fill="#2563eb"/>
+              <rect x="243" y="35" width="24" height="3" rx="1.5" fill="#2563eb"/>
+              <!-- Ground -->
+              <rect x="0" y="108" width="360" height="12" fill="#bfdbfe"/>
+            </svg>
+          </div>
+          <div class="step-content">
+            <div class="step-num">01</div>
+            <div class="step-title">Objekte anlegen</div>
+            <div class="step-desc">Importiere deine Bestandsdaten oder lege deine Immobilien mit wenigen Klicks neu an. Einheiten, Mieter und Dokumente folgen strukturiert.</div>
+          </div>
         </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div class="step-title">Mieter einladen</div>
-          <div class="step-desc">Mieter erhalten eine Einladung zur App. Ab sofort kommunizieren sie direkt über <strong class="brand">immonora</strong> — keine WhatsApp-Gruppen, keine verlorenen E-Mails.</div>
+
+        <!-- Step 2: Mieter einladen -->
+        <div class="step reveal">
+          <div class="step-illo">
+            <svg viewBox="0 0 360 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="120" fill="#f0f9ff"/>
+              <!-- Phone left -->
+              <rect x="72" y="12" width="76" height="96" rx="12" fill="#1d4ed8"/>
+              <rect x="79" y="22" width="62" height="76" rx="7" fill="#0f172a"/>
+              <!-- App screen content -->
+              <rect x="85" y="28" width="50" height="8"  rx="3" fill="#2563eb" opacity="0.9"/>
+              <rect x="85" y="42" width="38" height="6"  rx="2" fill="#334155" opacity="0.7"/>
+              <rect x="85" y="53" width="44" height="6"  rx="2" fill="#334155" opacity="0.5"/>
+              <rect x="85" y="66" width="50" height="20" rx="5" fill="#2563eb"/>
+              <rect x="100" y="73" width="20" height="6" rx="2" fill="white" opacity="0.9"/>
+              <!-- Notification card -->
+              <rect x="192" y="18" width="130" height="58" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+              <circle cx="214" cy="47" r="14" fill="#dbeafe"/>
+              <!-- Person icon -->
+              <circle cx="214" cy="41" r="5" fill="#3b82f6"/>
+              <path d="M204,54 Q214,49 224,54" fill="#3b82f6" opacity="0.8"/>
+              <rect x="232" y="32" width="72" height="7"  rx="2.5" fill="#1e293b" opacity="0.7"/>
+              <rect x="232" y="44" width="55" height="6"  rx="2" fill="#64748b" opacity="0.5"/>
+              <rect x="232" y="55" width="40" height="6"  rx="2" fill="#64748b" opacity="0.4"/>
+              <!-- Notification dot -->
+              <circle cx="316" cy="22" r="7" fill="#2563eb"/>
+              <!-- Connecting dashed line -->
+              <path d="M148 62 Q170 62 192 47" stroke="#93c5fd" stroke-width="2" stroke-dasharray="5 3" fill="none"/>
+              <!-- Second notification (smaller) -->
+              <rect x="204" y="85" width="110" height="26" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+              <circle cx="218" cy="98" r="8"  fill="#dcfce7"/>
+              <path d="M214,98 l3 3 l5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <rect x="231" y="92" width="55" height="5" rx="2" fill="#cbd5e1" opacity="0.7"/>
+              <rect x="231" y="101" width="40" height="4" rx="2" fill="#cbd5e1" opacity="0.5"/>
+              <!-- Ground -->
+              <rect x="0" y="108" width="360" height="12" fill="#bae6fd"/>
+            </svg>
+          </div>
+          <div class="step-content">
+            <div class="step-num">02</div>
+            <div class="step-title">Mieter einladen</div>
+            <div class="step-desc">Mieter erhalten eine Einladung zur App. Ab sofort kommunizieren sie direkt über <strong class="brand">immonora</strong> — keine WhatsApp-Gruppen, keine verlorenen E-Mails.</div>
+          </div>
         </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div class="step-title">KI übernimmt Routinen</div>
-          <div class="step-desc">Die eingebaute KI beantwortet Standardanfragen, erinnert an Fristen und schlägt Aktionen vor — damit du dich auf das Wesentliche konzentrierst.</div>
+
+        <!-- Step 3: KI übernimmt -->
+        <div class="step reveal">
+          <div class="step-illo">
+            <svg viewBox="0 0 360 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="120" fill="#f5f3ff"/>
+              <!-- KI Orb -->
+              <circle cx="180" cy="54" r="32" fill="#ede9fe"/>
+              <circle cx="180" cy="54" r="22" fill="#c4b5fd" opacity="0.7"/>
+              <circle cx="180" cy="54" r="14" fill="#8b5cf6" opacity="0.9"/>
+              <!-- Sparkle cross rays -->
+              <rect x="178" y="14" width="4" height="14" rx="2" fill="#8b5cf6" opacity="0.5"/>
+              <rect x="178" y="86" width="4" height="14" rx="2" fill="#8b5cf6" opacity="0.5"/>
+              <rect x="144" y="52" width="14" height="4" rx="2" fill="#8b5cf6" opacity="0.5"/>
+              <rect x="202" y="52" width="14" height="4" rx="2" fill="#8b5cf6" opacity="0.5"/>
+              <!-- Diagonal sparkles -->
+              <rect x="153" y="23" width="10" height="3" rx="1.5" fill="#8b5cf6" opacity="0.3" transform="rotate(45 158 24.5)"/>
+              <rect x="196" y="23" width="10" height="3" rx="1.5" fill="#8b5cf6" opacity="0.3" transform="rotate(-45 201 24.5)"/>
+              <rect x="153" y="82" width="10" height="3" rx="1.5" fill="#8b5cf6" opacity="0.3" transform="rotate(-45 158 83.5)"/>
+              <rect x="196" y="82" width="10" height="3" rx="1.5" fill="#8b5cf6" opacity="0.3" transform="rotate(45 201 83.5)"/>
+              <!-- Task checklist left -->
+              <rect x="16" y="22" width="100" height="23" rx="7" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+              <circle cx="33" cy="33" r="8" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+              <path d="M29,33 l3 3 l5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <rect x="47" y="27" width="55" height="5" rx="2" fill="#cbd5e1" opacity="0.8"/>
+              <rect x="47" y="35" width="38" height="4" rx="2" fill="#cbd5e1" opacity="0.5"/>
+              <rect x="16" y="51" width="100" height="23" rx="7" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+              <circle cx="33" cy="62" r="8" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+              <path d="M29,62 l3 3 l5-5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <rect x="47" y="56" width="48" height="5" rx="2" fill="#cbd5e1" opacity="0.8"/>
+              <rect x="47" y="64" width="32" height="4" rx="2" fill="#cbd5e1" opacity="0.5"/>
+              <rect x="16" y="80" width="100" height="23" rx="7" fill="white" stroke="#e2e8f0" stroke-width="1" opacity="0.6"/>
+              <circle cx="33" cy="91" r="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+              <rect x="47" y="85" width="42" height="5" rx="2" fill="#cbd5e1" opacity="0.5"/>
+              <rect x="47" y="93" width="28" height="4" rx="2" fill="#cbd5e1" opacity="0.4"/>
+              <!-- AI Chat bubble right -->
+              <rect x="244" y="20" width="102" height="50" rx="12" fill="#2563eb"/>
+              <rect x="254" y="30" width="74" height="6" rx="2" fill="white" opacity="0.9"/>
+              <rect x="254" y="41" width="58" height="5" rx="2" fill="white" opacity="0.7"/>
+              <rect x="254" y="51" width="44" height="5" rx="2" fill="white" opacity="0.5"/>
+              <polygon points="258,70 274,70 258,62" fill="#2563eb"/>
+              <!-- KI badge -->
+              <rect x="252" y="78" width="84" height="24" rx="8" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1"/>
+              <rect x="262" y="86" width="14" height="8" rx="3" fill="#8b5cf6" opacity="0.8"/>
+              <rect x="281" y="87" width="45" height="5" rx="2" fill="#8b5cf6" opacity="0.5"/>
+              <!-- Ground -->
+              <rect x="0" y="108" width="360" height="12" fill="#ddd6fe"/>
+            </svg>
+          </div>
+          <div class="step-content">
+            <div class="step-num">03</div>
+            <div class="step-title">KI übernimmt Routinen</div>
+            <div class="step-desc">Die eingebaute KI beantwortet Standardanfragen, erinnert an Fristen und schlägt Aktionen vor — damit du dich auf das Wesentliche konzentrierst.</div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
