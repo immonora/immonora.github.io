@@ -991,6 +991,116 @@
       .prop-cards-grid { grid-template-columns: 1fr; }
     }
 
+    /* ─── Mockup interactivity ───────────────────────── */
+    .ms-item { cursor: pointer; user-select: none; }
+    .ms-item:hover:not(.active) { background: rgba(255,255,255,0.06); }
+
+    .ms-icon {
+      width: 14px; height: 14px; flex-shrink: 0;
+      color: rgba(255,255,255,0.28);
+      transition: color 0.15s;
+    }
+    .ms-item.active .ms-icon { color: rgba(255,255,255,0.82); }
+
+    .ms-item-text {
+      flex: 1;
+      font-size: 11px; font-weight: 500;
+      color: rgba(255,255,255,0.28);
+      white-space: nowrap; overflow: hidden;
+      font-family: 'Geist', sans-serif;
+      letter-spacing: -0.01em;
+      transition: color 0.15s;
+    }
+    .ms-item.active .ms-item-text { color: rgba(255,255,255,0.88); }
+
+    .ms-badge-num {
+      font-size: 10px; font-weight: 600; color: white;
+      background: oklch(0.52 0.20 25);
+      border-radius: 100px; padding: 1px 6px;
+      min-width: 18px; text-align: center;
+      flex-shrink: 0; font-family: 'Geist', sans-serif;
+    }
+    .ms-badge-num.blue { background: oklch(0.40 0.18 248); }
+
+    @keyframes badge-ping {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%       { transform: scale(1.25); opacity: 0.7; }
+    }
+    .ms-badge-num.pulse { animation: badge-ping 2s ease-in-out infinite; }
+
+    /* KPI real content */
+    .mm-kpi-label-real {
+      font-size: 9px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      color: rgba(255,255,255,0.28);
+      font-family: 'Geist', sans-serif;
+    }
+    .mm-kpi-num {
+      font-size: 22px; font-weight: 700; line-height: 1;
+      color: rgba(255,255,255,0.90);
+      font-family: 'Geist', sans-serif;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+    .mm-kpi-sub-text {
+      font-size: 9px; color: rgba(255,255,255,0.20);
+      font-family: 'Geist', sans-serif;
+    }
+
+    /* Row text */
+    .mm-row-name {
+      font-size: 11px; font-weight: 500;
+      color: rgba(255,255,255,0.78);
+      font-family: 'Geist', sans-serif;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .mm-row-sub {
+      font-size: 9px; color: rgba(255,255,255,0.26);
+      font-family: 'Geist', sans-serif;
+    }
+    .mm-row-val {
+      font-size: 10px; color: rgba(255,255,255,0.42);
+      font-family: 'Geist', sans-serif;
+      flex-shrink: 0; font-variant-numeric: tabular-nums;
+    }
+    .mm-col-head {
+      font-size: 9px; color: rgba(255,255,255,0.25);
+      font-family: 'Geist', sans-serif;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    /* Screen title */
+    .mm-title-text {
+      font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      font-family: 'Geist', sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    /* Multi-screen container */
+    .mm-screens {
+      flex: 1; position: relative;
+      overflow: hidden; min-height: 0;
+    }
+    .ms-screen {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; gap: 12px;
+      opacity: 0; transform: translateX(10px);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+      pointer-events: none;
+    }
+    .ms-screen.active {
+      opacity: 1; transform: none; pointer-events: auto;
+    }
+
+    /* Row highlight flash */
+    @keyframes row-flash {
+      0%   { background: #0f0f1c; }
+      30%  { background: rgba(37,99,235,0.20); }
+      100% { background: #0f0f1c; }
+    }
+    .mm-row.flash { animation: row-flash 2.2s ease forwards; }
+
     /* ─── Wow effects ─────────────────────────────────── */
 
     /* Cursor glow */
@@ -1138,9 +1248,9 @@
     </form>
     <p class="signup-note">Kein Spam. Nur wichtige Updates. Jederzeit abmeldbar.</p>
 
-    <!-- App UI Mockup -->
-    <div class="app-mockup-wrap" aria-hidden="true">
-      <div class="app-mockup">
+    <!-- App UI Mockup (interactive) -->
+    <div class="app-mockup-wrap">
+      <div class="app-mockup" id="app-mockup">
 
         <!-- Browser chrome -->
         <div class="mockup-chrome">
@@ -1155,109 +1265,150 @@
         <!-- App body -->
         <div class="mockup-body">
 
-          <!-- Sidebar -->
+          <!-- Sidebar with labeled nav -->
           <div class="mockup-sidebar">
             <div class="ms-logo">
               <div class="ms-logo-icon"></div>
               <div class="ms-logo-text"></div>
             </div>
-            <div class="ms-nav">
-              <div class="ms-item active">
-                <div class="ms-item-dot"></div>
-                <div class="ms-item-label"></div>
+            <div class="ms-nav" id="ms-nav">
+              <div class="ms-item active" data-screen="dashboard" data-title="Dashboard">
+                <svg class="ms-icon" viewBox="0 0 14 14" fill="currentColor"><rect x="1" y="1" width="5" height="5" rx="1.5"/><rect x="8" y="1" width="5" height="5" rx="1.5"/><rect x="1" y="8" width="5" height="5" rx="1.5"/><rect x="8" y="8" width="5" height="5" rx="1.5"/></svg>
+                <span class="ms-item-text">Dashboard</span>
               </div>
-              <div class="ms-item">
-                <div class="ms-item-dot"></div>
-                <div class="ms-item-label"></div>
+              <div class="ms-item" data-screen="properties" data-title="Alle Objekte">
+                <svg class="ms-icon" viewBox="0 0 14 14" fill="currentColor"><path d="M7 1.5L12.5 5.8V13H1.5V5.8L7 1.5Z"/><rect x="5" y="7.5" width="4" height="5.5" rx="1" fill="#0a0a14"/></svg>
+                <span class="ms-item-text">Objekte</span>
+                <span class="ms-badge-num blue">12</span>
               </div>
-              <div class="ms-item">
-                <div class="ms-item-dot"></div>
-                <div class="ms-item-label"></div>
-                <div class="ms-badge"></div>
+              <div class="ms-item" data-screen="tenants" data-title="Mieterverwaltung">
+                <svg class="ms-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="5" cy="4.5" r="2.5"/><path d="M1 12.5c0-2.2 1.8-4 4-4s4 1.8 4 4"/><circle cx="11" cy="5" r="2" opacity="0.5"/><path d="M13.5 12.5c0-1.9-1.4-3.5-3-3.8" opacity="0.5"/></svg>
+                <span class="ms-item-text">Mieter</span>
               </div>
-              <div class="ms-item">
-                <div class="ms-item-dot"></div>
-                <div class="ms-item-label"></div>
+              <div class="ms-item" data-screen="tickets" data-title="Tickets">
+                <svg class="ms-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="3.5" width="12" height="8" rx="2"/><path d="M4 7h6M4 9.5h4"/></svg>
+                <span class="ms-item-text">Tickets</span>
+                <span class="ms-badge-num pulse">8</span>
               </div>
-              <div class="ms-item">
-                <div class="ms-item-dot"></div>
-                <div class="ms-item-label"></div>
+              <div class="ms-item" data-screen="finance" data-title="Finanzen">
+                <svg class="ms-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><path d="M9 5.5c-.6-.8-1.5-1.3-2.5-1.3C4.8 4.2 3.5 5.5 3.5 7s1.3 2.8 3 2.8c1 0 1.9-.5 2.5-1.3"/><path d="M3 6.5h5M3 8h5"/></svg>
+                <span class="ms-item-text">Finanzen</span>
               </div>
-              <div class="ms-item">
-                <div class="ms-item-dot"></div>
-                <div class="ms-item-label"></div>
+              <div class="ms-item" data-screen="docs" data-title="Dokumente">
+                <svg class="ms-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5H3a1 1 0 00-1 1v9a1 1 0 001 1h8a1 1 0 001-1V6.5L8 1.5Z"/><path d="M8 1.5v5h4"/><path d="M4.5 8h5M4.5 10h3"/></svg>
+                <span class="ms-item-text">Dokumente</span>
               </div>
             </div>
           </div>
 
-          <!-- Main area -->
+          <!-- Main content area -->
           <div class="mockup-main">
             <div class="mm-header">
-              <div class="mm-title"></div>
+              <div class="mm-title-text" id="mm-screen-title">Dashboard</div>
               <div class="mm-actions">
                 <div class="mm-btn ghost"></div>
                 <div class="mm-btn"></div>
               </div>
             </div>
 
-            <!-- KPI row -->
-            <div class="mm-kpis">
-              <div class="mm-kpi blue">
-                <div class="mm-kpi-label"></div>
-                <div class="mm-kpi-value"></div>
-                <div class="mm-kpi-trend"></div>
-              </div>
-              <div class="mm-kpi violet">
-                <div class="mm-kpi-label"></div>
-                <div class="mm-kpi-value"></div>
-                <div class="mm-kpi-trend"></div>
-              </div>
-              <div class="mm-kpi green">
-                <div class="mm-kpi-label"></div>
-                <div class="mm-kpi-value"></div>
-                <div class="mm-kpi-trend"></div>
-              </div>
-              <div class="mm-kpi amber">
-                <div class="mm-kpi-label"></div>
-                <div class="mm-kpi-value"></div>
-                <div class="mm-kpi-trend"></div>
-              </div>
-            </div>
+            <div class="mm-screens">
 
-            <!-- Property list table -->
-            <div class="mm-table">
-              <div class="mm-row head">
-                <div class="mm-row-icon" style="opacity:0"></div>
-                <div class="mm-row-text"><div class="mm-row-t1" style="width:30%"></div></div>
-                <div class="mm-row-num"></div>
-              </div>
-              <div class="mm-row">
-                <div class="mm-row-icon"></div>
-                <div class="mm-row-text">
-                  <div class="mm-row-t1"></div>
-                  <div class="mm-row-t2"></div>
+              <!-- Dashboard -->
+              <div class="ms-screen active" id="screen-dashboard">
+                <div class="mm-kpis">
+                  <div class="mm-kpi blue"><div class="mm-kpi-label-real">Objekte</div><div class="mm-kpi-num">12</div><div class="mm-kpi-sub-text">+2 diesen Monat</div></div>
+                  <div class="mm-kpi violet"><div class="mm-kpi-label-real">Mieter</div><div class="mm-kpi-num">47</div><div class="mm-kpi-sub-text">3 neue Anfragen</div></div>
+                  <div class="mm-kpi amber"><div class="mm-kpi-label-real">Tickets</div><div class="mm-kpi-num">8</div><div class="mm-kpi-sub-text">2 kritisch</div></div>
+                  <div class="mm-kpi green"><div class="mm-kpi-label-real">Einnahmen</div><div class="mm-kpi-num">€24k</div><div class="mm-kpi-sub-text">Dieser Monat</div></div>
                 </div>
-                <div class="mm-row-badge green"></div>
-                <div class="mm-row-num"></div>
-              </div>
-              <div class="mm-row">
-                <div class="mm-row-icon"></div>
-                <div class="mm-row-text">
-                  <div class="mm-row-t1" style="width:42%"></div>
-                  <div class="mm-row-t2" style="width:28%"></div>
+                <div class="mm-table">
+                  <div class="mm-row head"><div class="mm-row-icon" style="opacity:0"></div><div class="mm-row-text"><span class="mm-col-head">Objekt</span></div><span class="mm-col-head">Belegung</span></div>
+                  <div class="mm-row" id="dr1"><div class="mm-row-icon"></div><div class="mm-row-text"><div class="mm-row-name">Sonnenhof</div><div class="mm-row-sub">München · 12 Einh.</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">96%</div></div>
+                  <div class="mm-row" id="dr2"><div class="mm-row-icon"></div><div class="mm-row-text"><div class="mm-row-name">Rosenpark</div><div class="mm-row-sub">Hamburg · 6 Einh.</div></div><div class="mm-row-badge amber"></div><div class="mm-row-val">83%</div></div>
+                  <div class="mm-row" id="dr3"><div class="mm-row-icon"></div><div class="mm-row-text"><div class="mm-row-name">Westquartier</div><div class="mm-row-sub">Berlin · 24 Einh.</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">100%</div></div>
                 </div>
-                <div class="mm-row-badge amber"></div>
-                <div class="mm-row-num"></div>
               </div>
-              <div class="mm-row">
-                <div class="mm-row-icon"></div>
-                <div class="mm-row-text">
-                  <div class="mm-row-t1" style="width:60%"></div>
-                  <div class="mm-row-t2" style="width:40%"></div>
+
+              <!-- Objekte -->
+              <div class="ms-screen" id="screen-properties">
+                <div class="mm-kpis">
+                  <div class="mm-kpi blue"><div class="mm-kpi-label-real">Gesamt</div><div class="mm-kpi-num">12</div><div class="mm-kpi-sub-text">Objekte</div></div>
+                  <div class="mm-kpi green"><div class="mm-kpi-label-real">Einheiten</div><div class="mm-kpi-num">156</div><div class="mm-kpi-sub-text">Total</div></div>
+                  <div class="mm-kpi violet"><div class="mm-kpi-label-real">Belegt</div><div class="mm-kpi-num">149</div><div class="mm-kpi-sub-text">95.5% Ø</div></div>
+                  <div class="mm-kpi amber"><div class="mm-kpi-label-real">Leerstand</div><div class="mm-kpi-num">7</div><div class="mm-kpi-sub-text">Einheiten</div></div>
                 </div>
-                <div class="mm-row-badge blue"></div>
-                <div class="mm-row-num"></div>
+                <div class="mm-table">
+                  <div class="mm-row head"><div class="mm-row-icon" style="opacity:0"></div><div class="mm-row-text"><span class="mm-col-head">Objekt</span></div><span class="mm-col-head">Occ.</span></div>
+                  <div class="mm-row"><div class="mm-row-icon"></div><div class="mm-row-text"><div class="mm-row-name">Sonnenhof, München</div><div class="mm-row-sub">Wohnanlage · 12 Einh.</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">96%</div></div>
+                  <div class="mm-row"><div class="mm-row-icon"></div><div class="mm-row-text"><div class="mm-row-name">Rosenpark, Hamburg</div><div class="mm-row-sub">Villa · 6 Einh.</div></div><div class="mm-row-badge amber"></div><div class="mm-row-val">83%</div></div>
+                  <div class="mm-row"><div class="mm-row-icon"></div><div class="mm-row-text"><div class="mm-row-name">Westquartier, Berlin</div><div class="mm-row-sub">Gewerbe · 24 Einh.</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">100%</div></div>
+                </div>
               </div>
+
+              <!-- Mieter -->
+              <div class="ms-screen" id="screen-tenants">
+                <div class="mm-kpis">
+                  <div class="mm-kpi blue"><div class="mm-kpi-label-real">Aktive</div><div class="mm-kpi-num">47</div><div class="mm-kpi-sub-text">Mieter</div></div>
+                  <div class="mm-kpi green"><div class="mm-kpi-label-real">Neu</div><div class="mm-kpi-num">3</div><div class="mm-kpi-sub-text">Diesen Monat</div></div>
+                  <div class="mm-kpi amber"><div class="mm-kpi-label-real">Rückstand</div><div class="mm-kpi-num">2</div><div class="mm-kpi-sub-text">Mahnung aktiv</div></div>
+                  <div class="mm-kpi violet"><div class="mm-kpi-label-real">Auslaufend</div><div class="mm-kpi-num">4</div><div class="mm-kpi-sub-text">In 90 Tagen</div></div>
+                </div>
+                <div class="mm-table">
+                  <div class="mm-row head"><div class="mm-row-icon" style="opacity:0"></div><div class="mm-row-text"><span class="mm-col-head">Mieter</span></div><span class="mm-col-head">Status</span></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.58 0.16 280/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">M. Müller</div><div class="mm-row-sub">Sonnenhof 3.2</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">aktuell</div></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.58 0.16 155/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">S. Schmidt</div><div class="mm-row-sub">Rosenpark EG</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">aktuell</div></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.65 0.16 60/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">T. Bauer</div><div class="mm-row-sub">Westquartier 1A</div></div><div class="mm-row-badge amber"></div><div class="mm-row-val">Mahnung</div></div>
+                </div>
+              </div>
+
+              <!-- Tickets -->
+              <div class="ms-screen" id="screen-tickets">
+                <div class="mm-kpis">
+                  <div class="mm-kpi amber"><div class="mm-kpi-label-real">Offen</div><div class="mm-kpi-num">8</div><div class="mm-kpi-sub-text">Benötigt Aktion</div></div>
+                  <div class="mm-kpi blue"><div class="mm-kpi-label-real">In Arbeit</div><div class="mm-kpi-num">4</div><div class="mm-kpi-sub-text">Zugewiesen</div></div>
+                  <div class="mm-kpi violet"><div class="mm-kpi-label-real">Kritisch</div><div class="mm-kpi-num">2</div><div class="mm-kpi-sub-text">Sofortmaßnahme</div></div>
+                  <div class="mm-kpi green"><div class="mm-kpi-label-real">Erledigt</div><div class="mm-kpi-num">32</div><div class="mm-kpi-sub-text">Diesen Monat</div></div>
+                </div>
+                <div class="mm-table">
+                  <div class="mm-row head"><div class="mm-row-icon" style="opacity:0"></div><div class="mm-row-text"><span class="mm-col-head">Ticket</span></div><span class="mm-col-head">Prio</span></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.50 0.20 25/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">Heizung defekt</div><div class="mm-row-sub">Sonnenhof · Müller</div></div><div class="mm-row-badge" style="background:oklch(0.28 0.12 25);width:46px"></div><div class="mm-row-val">Kritisch</div></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.50 0.18 248/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">Fenster klemmt</div><div class="mm-row-sub">Rosenpark · Schmidt</div></div><div class="mm-row-badge amber"></div><div class="mm-row-val">Mittel</div></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.45 0.16 248/0.3)"></div><div class="mm-row-text"><div class="mm-row-name">Briefkasten lose</div><div class="mm-row-sub">Westquartier · Bauer</div></div><div class="mm-row-badge blue"></div><div class="mm-row-val">Niedrig</div></div>
+                </div>
+              </div>
+
+              <!-- Finanzen -->
+              <div class="ms-screen" id="screen-finance">
+                <div class="mm-kpis">
+                  <div class="mm-kpi green"><div class="mm-kpi-label-real">Einnahmen</div><div class="mm-kpi-num">€24k</div><div class="mm-kpi-sub-text">Dieser Monat</div></div>
+                  <div class="mm-kpi blue"><div class="mm-kpi-label-real">Ausgaben</div><div class="mm-kpi-num">€8k</div><div class="mm-kpi-sub-text">Dieser Monat</div></div>
+                  <div class="mm-kpi violet"><div class="mm-kpi-label-real">Netto</div><div class="mm-kpi-num">€16k</div><div class="mm-kpi-sub-text">Überschuss</div></div>
+                  <div class="mm-kpi amber"><div class="mm-kpi-label-real">Mahnungen</div><div class="mm-kpi-num">2</div><div class="mm-kpi-sub-text">Ausstehend</div></div>
+                </div>
+                <div class="mm-table">
+                  <div class="mm-row head"><div class="mm-row-icon" style="opacity:0"></div><div class="mm-row-text"><span class="mm-col-head">Zahlung</span></div><span class="mm-col-head">Betrag</span></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.45 0.16 155/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">Mietzahlung Mai</div><div class="mm-row-sub">Sonnenhof · Müller</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">€1.240</div></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.45 0.16 155/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">Mietzahlung Mai</div><div class="mm-row-sub">Rosenpark · Schmidt</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">€890</div></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.50 0.18 25/0.3)"></div><div class="mm-row-text"><div class="mm-row-name">Mietzahlung Mai</div><div class="mm-row-sub">Westquartier · Bauer</div></div><div class="mm-row-badge amber"></div><div class="mm-row-val">€1.100</div></div>
+                </div>
+              </div>
+
+              <!-- Dokumente -->
+              <div class="ms-screen" id="screen-docs">
+                <div class="mm-kpis">
+                  <div class="mm-kpi blue"><div class="mm-kpi-label-real">Dokumente</div><div class="mm-kpi-num">142</div><div class="mm-kpi-sub-text">Gesamt</div></div>
+                  <div class="mm-kpi green"><div class="mm-kpi-label-real">Verträge</div><div class="mm-kpi-num">47</div><div class="mm-kpi-sub-text">Aktiv</div></div>
+                  <div class="mm-kpi amber"><div class="mm-kpi-label-real">Ablaufend</div><div class="mm-kpi-num">4</div><div class="mm-kpi-sub-text">In 30 Tagen</div></div>
+                  <div class="mm-kpi violet"><div class="mm-kpi-label-real">Signaturen</div><div class="mm-kpi-num">3</div><div class="mm-kpi-sub-text">Ausstehend</div></div>
+                </div>
+                <div class="mm-table">
+                  <div class="mm-row head"><div class="mm-row-icon" style="opacity:0"></div><div class="mm-row-text"><span class="mm-col-head">Dokument</span></div><span class="mm-col-head">Typ</span></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.45 0.16 248/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">Mietvertrag Müller</div><div class="mm-row-sub">Sonnenhof 3.2</div></div><div class="mm-row-badge green"></div><div class="mm-row-val">Vertrag</div></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.45 0.16 248/0.4)"></div><div class="mm-row-text"><div class="mm-row-name">Übergabeprotokoll</div><div class="mm-row-sub">Rosenpark EG</div></div><div class="mm-row-badge blue"></div><div class="mm-row-val">Protokoll</div></div>
+                  <div class="mm-row"><div class="mm-row-icon" style="background:oklch(0.55 0.16 60/0.3)"></div><div class="mm-row-text"><div class="mm-row-name">Nebenkost. 2025</div><div class="mm-row-sub">Westquartier</div></div><div class="mm-row-badge amber"></div><div class="mm-row-val">Abrechnung</div></div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -1786,7 +1937,7 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll(
-      '.section-label, .section-title, .section-sub, .feature-card, .step, .cta-title, .cta-sub, .cta-card'
+      '.section-label, .section-title, .section-sub, .feature-card, .prop-card, .step, .cta-title, .cta-sub, .cta-card'
     ).forEach(el => {
       el.classList.add('reveal');
       revealObs.observe(el);
@@ -1806,6 +1957,65 @@
         card.style.transform = '';
       });
     });
+
+    // ─── App Mockup Interactivity ──────────────────────
+    const mockup = document.getElementById('app-mockup');
+    if (mockup) {
+      const navItems    = mockup.querySelectorAll('.ms-item[data-screen]');
+      const screens     = mockup.querySelectorAll('.ms-screen');
+      const titleEl     = document.getElementById('mm-screen-title');
+      const screenOrder = ['dashboard','properties','tenants','tickets','finance','docs'];
+      let currentIdx    = 0;
+      let autoCycleTimer;
+
+      function cycleToScreen(idx) {
+        const id = screenOrder[idx];
+        navItems.forEach(n => n.classList.remove('active'));
+        screens.forEach(s  => s.classList.remove('active'));
+        const nav = mockup.querySelector(`[data-screen="${id}"]`);
+        const scr = document.getElementById('screen-' + id);
+        if (nav) nav.classList.add('active');
+        if (scr) scr.classList.add('active');
+        if (titleEl && nav) titleEl.textContent = nav.dataset.title;
+      }
+
+      function startAutoCycle() {
+        clearInterval(autoCycleTimer);
+        autoCycleTimer = setInterval(() => {
+          currentIdx = (currentIdx + 1) % screenOrder.length;
+          cycleToScreen(currentIdx);
+        }, 5000);
+      }
+
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          clearInterval(autoCycleTimer);
+          currentIdx = screenOrder.indexOf(item.dataset.screen);
+          cycleToScreen(currentIdx);
+          setTimeout(startAutoCycle, 15000);
+        });
+      });
+
+      const mockupObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          cycleToScreen(0);
+          startAutoCycle();
+          const flashRows = ['dr1','dr2','dr3'].map(id => document.getElementById(id)).filter(Boolean);
+          let ri = 0;
+          setInterval(() => {
+            flashRows.forEach(r => r.classList.remove('flash'));
+            if (flashRows[ri]) {
+              void flashRows[ri].offsetWidth; // reflow to restart animation
+              flashRows[ri].classList.add('flash');
+            }
+            ri = (ri + 1) % flashRows.length;
+          }, 2500);
+          mockupObs.unobserve(e.target);
+        });
+      }, { threshold: 0.3 });
+      mockupObs.observe(mockup);
+    }
 
     // ─── Formspree ─────────────────────────────────────
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqejerek';
